@@ -31,7 +31,7 @@ jobs:
         run: zowe profiles create ssh-profile ragprofile --host "${{secrets.ZOWE_HOST}}" --port 22 --user "${{secrets.ZOWE_USERID}}" --password "${{secrets.ZOWE_PASSWORD}}"
       - name: Run zowe cli command
         run: |
-         zowe zos-uss issue ssh 'rm -rf /u/RGOPALK/zappbuild/cobolapp' --ssh-profile ragprofile
+         # zowe zos-uss issue ssh 'rm -rf /u/RGOPALK/zappbuild/cobolapp' --ssh-profile ragprofile
          zowe zos-uss issue ssh 'git clone --branch feature2 git@github.com:raghug-source/cobolapp.git' -ssh-profile ragprofile
          zowe zos-uss issue ssh '/usr/lpp/IBM/dbb/bin/groovyz /u/RGOPALK/zappbuild/origbuild.groovy --workspace /u/RGOPALK/zappbuild --application cobolapp --outDir /u/RGOPALK/zappbuild/out --hlq RGOPALK.RAG --impactBuild' --ssh-profile ragprofile 
       
